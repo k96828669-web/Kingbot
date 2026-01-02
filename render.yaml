@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: telegram-stream-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+```
+
+## 🔧 Render.com pe Deployment Steps:
+
+1. **GitHub par 3 files upload karo** (requirements.txt, bot.py, render.yaml)
+
+2. **Render.com Dashboard:**
+   - New → Web Service
+   - Connect GitHub repository
+   - Settings:
+     - **Name**: my-stream-bot
+     - **Environment**: Python 3
+     - **Build Command**: `pip install -r requirements.txt`
+     - **Start Command**: `python bot.py`
+     - **Instance Type**: Free
+
+3. **Environment Variables** (Important!):
+```
+   BOT_TOKEN = (BotFather se mila token)
+   PORT = 10000
